@@ -10,7 +10,7 @@ import GameOne from './components/Game One/GameOne';
 import GameTwo from './components/Game Two/GameTwo';
 import GameThree from './components/Game Three/GameThree';
 import GameFour from './components/Game Four/GameFour';
-import NotFound from './Custom Components/NotFound';
+// import NotFound from './Custom Components/NotFound';
 
 function App() {
   useEffect(() => {
@@ -22,12 +22,13 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/speak-play-learn' element={<Home />} />
         <Route path='/games' element={<Games />} />
         <Route path='/gameOne' element={<GameOne />} />
         <Route path='/gameTwo' element={<GameTwo />} />
         <Route path='/gameThree' element={<GameThree />} />
         <Route path='/gameFour' element={<GameFour />} />
-        <Route path='*' element={<NotFound />} />{' '}
+        {/* <Route path='*' element={<NotFound />} />{' '} */}
       </Routes>
       <ToastContainer />
     </>
