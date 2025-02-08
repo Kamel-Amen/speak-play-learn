@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+@import 'tailwindcss';
+/* ! ============================================================== */
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  background-color: #d55959;
+}
+/* ! ============================================================== */
+
+/* * Game One Section */
+.game-one-sec > .holder {
+  background: url('/game-one-cover.jpg') no-repeat fixed center;
+  background-size: cover;
+  filter: brightness(20%);
+  -webkit-filter: brightness(20%);
+  z-index: -1;
+}
+/* ! ============================================================== */
+
+/* Default Classes */
+body {
+  font-family: 'Cairo', serif !important;
+}
+
+.rotate-effect {
+  animation: rotate-effect-animation 3.5s ease-in-out infinite;
+  -webkit-animation: rotate-effect-animation 3.5s ease-in-out infinite;
+}
+
+.navbar-btn {
+  transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  border: 2px solid #c75c5c;
+  color: #fff !important;
+  background-color: #c75c5c;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+}
+
+.navbar-btn:hover {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.transition-1 {
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+}
+/* ! ============================================================== */
+
+/* * Keyframes*/
+@keyframes rotate-effect-animation {
+  0%,
+  100% {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+  }
+  50% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+  }
+}
