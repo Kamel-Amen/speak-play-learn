@@ -10,7 +10,7 @@ import GameOne from './components/Game One/GameOne';
 import GameTwo from './components/Game Two/GameTwo';
 import GameThree from './components/Game Three/GameThree';
 import GameFour from './components/Game Four/GameFour';
-// import NotFound from './Custom Components/NotFound';
+import NotFound from './Custom Components/NotFound';
 
 function App() {
   useEffect(() => {
@@ -28,7 +28,7 @@ function App() {
         <Route path='/gameTwo' element={<GameTwo />} />
         <Route path='/gameThree' element={<GameThree />} />
         <Route path='/gameFour' element={<GameFour />} />
-        {/* <Route path='*' element={<NotFound />} />{' '} */}
+        <Route path='*' element={<NotFound />} />{' '}
       </Routes>
       <ToastContainer />
     </>
