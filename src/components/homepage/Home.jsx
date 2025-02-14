@@ -7,6 +7,7 @@ import brain from '/brain.png';
 import flexibility from '/flexibility.png';
 import interaction from '/interaction.png';
 import focus from '/focus.png';
+import Footer from '../../Custom Components/Footer';
 
 const Home = () => {
   return (
@@ -26,7 +27,7 @@ const Home = () => {
         </video>
 
         {/* Welcome Section */}
-        <div className='welcome-phrase text-white relative font-bold mt-50'>
+        <div className='welcome-phrase text-white relative w-full h-full font-bold flex flex-col justify-center items-center'>
           <p
             className='text-[4rem]'
             data-aos='fade-up'
@@ -65,15 +66,15 @@ const Home = () => {
               data-aos='fade-down'
               data-aos-duration='1500'
             >
-              موقعنا هو موقع ألعاب للأطفال لمساعدتهم علي تخطي عقبة التلعثم , حيث
-              يعتمد موقعنا علي عدة ألعاب تفاعلية تعليمية تعتمد علي الصوت , وتهدف
-              إلي تشجيع الأطفال الذين يعانون من التلعثم أو صعوبة الكلام علي
-              ممارسة التخاطب بطريقة ممتعة و مشجعة .{' '}
+              موقعنا هو موقع تربوي , قائم علي مساعدة وتأهيل الأطفال ذوي
+              الأحتياجات الخاصة بشكل عام وذوي أضطراب التلعثم بشكل خاص , فهو قائم
+              علي الألعاب التفاعلية التعليمية لتحسين الوظائف التنفيذية للدماغ
+              وعلاج التلعثم بإستخدام أنشطة الكمبيوتر بطريقة ممتعمة ومشجعة .
               <img src={lolFace} alt='face' className='inline-block' />
             </p>
 
             <Link
-              to='/games'
+              to='/speak-play-learn/games'
               className='bg-[#C75C5C] hover:bg-blue-400 text-white font-bold border-b-5 border-gray-300 hover:border-blue-500 rounded flex justify-center cursor-pointer mt-12 px-5 py-3 transition-1'
             >
               ألعب الأن{' '}
@@ -173,7 +174,7 @@ const Home = () => {
           </section>
 
           <Link
-            to='/games'
+            to='/speak-play-learn/games'
             className='bg-[#C75C5C] hover:bg-blue-400 text-white font-bold border-b-5 border-gray-400 hover:border-blue-500 rounded-4xl flex justify-center cursor-pointer mt-20 px-5 py-3 transition-1 w-[13rem] mx-auto text-2xl'
             data-aos='fade-up'
             data-aos-duration='1500'
@@ -188,10 +189,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Footer Section */}
-      <footer className='bg-black h-[3rem] text-white flex items-center justify-center font-bold'>
-        جميع الحقوق محفوظة &copy; {new Date().getFullYear()}
-      </footer>
+      <Footer />
     </div>
   );
 };

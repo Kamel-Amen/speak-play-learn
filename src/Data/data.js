@@ -2,59 +2,43 @@
 const numbersArray = [
   {
     number: 0,
-    numWord: 'Zero',
+    numWord: 'صفر',
+  },
+  {
+    number: 1,
+    numWord: 'واحد',
+  },
+  {
+    number: 2,
+    numWord: 'اتنين',
+  },
+  {
+    number: 3,
+    numWord: 'تلاتة',
+  },
+  {
+    number: 4,
+    numWord: 'اربعة',
+  },
+  {
+    number: 5,
+    numWord: 'خمسة',
+  },
+  {
+    number: 6,
+    numWord: 'ستة',
   },
   {
     number: 7,
-    numWord: 'Seven',
+    numWord: 'سبعة',
+  },
+  {
+    number: 8,
+    numWord: 'تمانية',
   },
   {
     number: 9,
-    numWord: 'Nine',
-  },
-  {
-    number: 10,
-    numWord: 'Ten',
-  },
-  {
-    number: 11,
-    numWord: 'Eleven',
-  },
-  {
-    number: 12,
-    numWord: 'Twelve',
-  },
-  {
-    number: 13,
-    numWord: 'Thirteen',
-  },
-  {
-    number: 14,
-    numWord: 'Fourteen',
-  },
-  {
-    number: 15,
-    numWord: 'Fifteen',
-  },
-  {
-    number: 16,
-    numWord: 'Sixteen',
-  },
-  {
-    number: 17,
-    numWord: 'Seventeen',
-  },
-  {
-    number: 18,
-    numWord: 'Eighteen',
-  },
-  {
-    number: 19,
-    numWord: 'Nineteen',
-  },
-  {
-    number: 20,
-    numWord: 'Twenty',
+    numWord: 'تسعة',
   },
 ];
 

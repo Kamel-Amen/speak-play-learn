@@ -1,14 +1,26 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import back from '/back.png';
+import numbersIcon from '/numbers.png';
+import imagesIcon from '/images.png';
+import backIcon from '/back.png';
 
+// eslint-disable-next-line react/prop-types
 const Sidebar = ({ gameNumber }) => {
   const gameOneSidebar = [
     {
+      linkTitle: 'نشاط الأرقام',
+      link: '/speak-play-learn/numbersMemory',
+      icon: numbersIcon,
+    },
+    {
+      linkTitle: 'نشاط الصور',
+      link: '/speak-play-learn/imagesMemory',
+      icon: imagesIcon,
+    },
+    {
       linkTitle: 'رجوع',
-      link: '/games',
+      link: '/speak-play-learn/gameOne',
+      icon: backIcon,
     },
   ];
   // const gameTwoSidebar = [];
@@ -34,6 +46,7 @@ const Sidebar = ({ gameNumber }) => {
       default:
         break;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -42,7 +55,7 @@ const Sidebar = ({ gameNumber }) => {
         ألعاب أخرى
       </header>
 
-      <ul className='w-full h-[90%] pt-20'>
+      <ul className='w-full h-[90%] flex items-center justify-center flex-col gap-10'>
         {renderedSidebar.map((ele) => (
           <li
             className='bg-[#FFF] text-[#C75C5C] py-1 w-fit mx-auto px-5 rounded-3xl'
@@ -50,10 +63,10 @@ const Sidebar = ({ gameNumber }) => {
           >
             <Link
               to={ele.link}
-              className='text-xl font-semibold flex justify-center items-center'
+              className='text-xl font-semibold flex justify-center items-center gap-3'
             >
               {ele.linkTitle}{' '}
-              <img src={back} alt='back' className='ms-3 w-[35px] h-[35px]' />
+              <img src={ele.icon} alt='icon' className='w-[35px] h-[35px]' />
             </Link>
           </li>
         ))}

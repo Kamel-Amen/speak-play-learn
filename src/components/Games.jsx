@@ -1,8 +1,8 @@
+import { Link } from 'react-router-dom';
 import interaction from '/interaction.png';
 import brain from '/brain.png';
 import flexibility from '/flexibility.png';
 import focus from '/focus.png';
-import { Link } from 'react-router-dom';
 
 const Games = () => {
   const games = [
@@ -10,12 +10,13 @@ const Games = () => {
       id: 1,
       title: 'ألعاب التثبيط | كف الأستجابة',
       icon: interaction,
-      sectionStyle: 'w-1/4 text-[#C75C5C] bg-[#FFF]',
+      sectionStyle:
+        'w-1/4 text-[#C75C5C] bg-[#FFF] flex flex-col justify-center items-center h-full',
       aosDuration: 1250,
       games: [
         {
-          gameTitle: 'لعبة الأرقام',
-          link: '/gameOne',
+          gameTitle: 'لعبة الذاكرة',
+          link: '/speak-play-learn/gameOne',
           gameStyle:
             'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-300 ease-in-out hover:scale-110',
           linkColor: 'text-[#FFF]',
@@ -26,54 +27,33 @@ const Games = () => {
       id: 2,
       title: 'ألعاب المرونة المعرفية',
       icon: flexibility,
-      sectionStyle: 'w-1/4 text-[#FFF] bg-[#C75C5C]',
+      sectionStyle:
+        'w-1/4 text-[#FFF] bg-[#C75C5C] flex flex-col justify-center items-center h-full',
       aosDuration: 1500,
-      games: [
-        {
-          gameTitle: '2 لعبة الأرقام',
-          link: '/gameTwo',
-          gameStyle:
-            'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#FFF] transition duration-300 ease-in-out hover:scale-110',
-          linkColor: 'text-[#C75C5C]',
-        },
-      ],
+      games: [],
     },
     {
       id: 3,
       title: 'ألعاب الذاكرة العاملة والذاكرة قصيرة الأمد',
       icon: brain,
-      sectionStyle: 'w-1/4 text-[#C75C5C] bg-[#FFF]',
+      sectionStyle:
+        'w-1/4 text-[#C75C5C] bg-[#FFF] flex flex-col justify-center items-center h-full',
       aosDuration: 1750,
-      games: [
-        {
-          gameTitle: 'لعبة الأرقام',
-          link: '/gameOne',
-          gameStyle:
-            'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-300 ease-in-out hover:scale-110',
-          linkColor: 'text-[#FFF]',
-        },
-      ],
+      games: [],
     },
     {
       id: 4,
       title: 'ألعاب تبديل الأنتباه | التحويل',
       icon: focus,
-      sectionStyle: 'w-1/4 text-[#FFF] bg-[#C75C5C]',
+      sectionStyle:
+        'w-1/4 text-[#FFF] bg-[#C75C5C] flex flex-col justify-center items-center h-full',
       aosDuration: 2000,
-      games: [
-        {
-          gameTitle: 'لعبة الأرقام',
-          link: '/gameOne',
-          gameStyle:
-            'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#FFF] transition duration-300 ease-in-out hover:scale-110',
-          linkColor: 'text-[#C75C5C]',
-        },
-      ],
+      games: [],
     },
   ];
 
   return (
-    <div className='games h-[34.5rem] text-center flex overflow-hidden'>
+    <div className='games h-screen text-center flex overflow-hidden'>
       {games.map((game) => {
         return (
           <section
@@ -91,7 +71,7 @@ const Games = () => {
               />
             </header>
 
-            <ul className='h-[80%] pt-10'>
+            <ul className='h-fit pt-5'>
               {game.games.map((ele) => (
                 <li className={ele.gameStyle} key={ele.gameTitle}>
                   <Link to={ele.link} className={ele.linkColor}>

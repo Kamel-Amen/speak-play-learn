@@ -4,7 +4,7 @@ import logo from '/games.png';
 const Navbar = () => {
   return (
     <nav
-      className='font-cairo flex justify-between py-2 px-7 items-center border-b border-gray-500 bg-gray-100'
+      className='font-cairo flex justify-between py-2 px-7 items-center border-b border-gray-500 bg-gray-100 fixed w-full z-10'
       data-aos='fade-down'
       data-aos-duration='1500'
     >
@@ -21,10 +21,10 @@ const Navbar = () => {
 
       <ul className='flex'>
         <li className='navbar-btn text-base py-1 px-3'>
-          <Link to='/'>الصفحة الرئيسية</Link>
+          <Link to='/speak-play-learn'>الصفحة الرئيسية</Link>
         </li>
         <li className='ms-4 navbar-btn text-base py-1 px-3'>
-          <Link to='/games'>اﻷلعاب</Link>
+          <Link to='/speak-play-learn/games'>اﻷلعاب</Link>
         </li>
       </ul>
     </nav>

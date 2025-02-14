@@ -23,12 +23,20 @@
 
 /* * Game One Section */
 .game-one-sec > .holder {
-  background: url('/game-one-cover.jpg') no-repeat fixed center;
+  background: url('/endless-constellation.png') no-repeat fixed center;
   background-size: cover;
-  filter: brightness(20%);
-  -webkit-filter: brightness(20%);
   z-index: -1;
 }
+
+/* ? Numbers Activity Section */
+.numbers-activity-sec > .holder {
+  background: url('/game-one-cover.jpg') no-repeat fixed center;
+  background-size: cover;
+  z-index: -1;
+  filter: brightness(20%);
+  -webkit-filter: brightness(20%);
+}
+
 /* ! ============================================================== */
 
 /* Default Classes */
