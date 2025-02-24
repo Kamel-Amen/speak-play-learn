@@ -1,45 +1,17 @@
 // Numbers object for numbers game
-const numbersArray = [
-  {
-    number: 0,
-    numWord: 'صفر',
-  },
-  {
-    number: 1,
-    numWord: 'واحد',
-  },
-  {
-    number: 2,
-    numWord: 'اتنين',
-  },
-  {
-    number: 3,
-    numWord: 'تلاتة',
-  },
-  {
-    number: 4,
-    numWord: 'اربعة',
-  },
-  {
-    number: 5,
-    numWord: 'خمسة',
-  },
-  {
-    number: 6,
-    numWord: 'ستة',
-  },
-  {
-    number: 7,
-    numWord: 'سبعة',
-  },
-  {
-    number: 8,
-    numWord: 'تمانية',
-  },
-  {
-    number: 9,
-    numWord: 'تسعة',
-  },
+const numbersArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+const numbersWordsArray = [
+  'صفر',
+  'واحد',
+  'اتنين',
+  'تلاتة',
+  'اربعة',
+  'خمسة',
+  'ستة',
+  'سبعة',
+  'تمانية',
+  'تسعة',
 ];
 
-export { numbersArray };
+export { numbersArray, numbersWordsArray };

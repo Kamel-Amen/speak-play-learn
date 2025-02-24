@@ -71,6 +71,28 @@ body {
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
 }
+
+.toast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  border: 3px solid #aaa;
+}
+.toast-info {
+  background: #3498db;
+}
+.toast-success {
+  background: #07bc0c;
+}
+.toast-error {
+  background: #e74d3c;
+}
+.toast-warning {
+  background: #f1c40f;
+}
 /* ! ============================================================== */
 
 /* * Keyframes*/
