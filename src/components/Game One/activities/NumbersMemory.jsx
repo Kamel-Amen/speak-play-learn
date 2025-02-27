@@ -1,19 +1,15 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { generateNewNumberArray } from '../../../Custom/customFunctions';
 import { numbersArray } from '../../../Data/data';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
+import Confetti from 'react-confetti';
 import downIcon from '/down.gif';
 import levelsIcon from '/levels.png';
 import clockIcon from '/clock.gif';
-
-/*
-✅
-❌
-⚠️
-ℹ️
-*/
+import exitIcon from '/exit.gif';
 
 const levels = [
   {
@@ -23,6 +19,22 @@ const levels = [
   {
     title: 'المستوي الثاني',
     numbersCount: 4,
+  },
+  {
+    title: 'المستوي الثالث',
+    numbersCount: 5,
+  },
+  {
+    title: 'المستوي الرابع',
+    numbersCount: 6,
+  },
+  {
+    title: 'المستوي الخامس',
+    numbersCount: 7,
+  },
+  {
+    title: 'المستوي السادس',
+    numbersCount: 8,
   },
 ];
 
@@ -34,14 +46,13 @@ const NumbersMemory = () => {
   const [recognizedSpeech, setRecognizedSpeech] = useState('');
   const [isListening, setIsListening] = useState(false);
   const [startGame, setStartGame] = useState(false);
-  const [timeLimit, setTimeLimit] = useState(5);
   const [timeLeft, setTimeLeft] = useState(5);
   const [hideNumbers, setHideNumbers] = useState(false);
   const [progress, setProgress] = useState(0);
+  const timeInterval = useRef(null); // Store interval ID
+  const [showConfetti, setShowConfetti] = useState(false);
 
   let recognition;
-  let timeout;
-  let timeInterval;
 
   // ! Hooks
   useEffect(() => {
@@ -49,6 +60,24 @@ const NumbersMemory = () => {
       className: 'toast toast-info',
     });
   }, []);
+
+  const intervals = () => {
+    // Clear any existing interval before starting a new one
+    if (timeInterval.current) {
+      clearInterval(timeInterval.current);
+    }
+    // ? Time Interval Function and Stop recognition after the selected time limit
+    timeInterval.current = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 0) {
+          clearInterval(timeInterval.current);
+          setHideNumbers(true);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
 
   // ? Build Function
   const buildGame = (title, count) => {
@@ -58,38 +87,17 @@ const NumbersMemory = () => {
     afterResult(count);
     setProgress(0);
 
-    // ! Stop recognition after the selected time limit
-    timeout = setTimeout(() => {
-      setHideNumbers(true);
-    }, timeLimit * 1000);
-
-    // ? Time Interval Function
-    timeInterval = setInterval(() => {
-      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
-    }, 1000);
+    intervals();
   };
 
   // ? Reset Game Function
   const afterResult = (count) => {
-    // ! Stop recognition after the selected time limit
-    timeout = setTimeout(() => {
-      setHideNumbers(true);
-    }, timeLimit * 1000);
-
-    // ? Time Interval Function
-    timeInterval = setInterval(() => {
-      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
-    }, 1000);
-
+    setTimeLeft(5);
+    intervals();
     setNumbers([]);
     setCount(count);
     setNumbers(generateNewNumberArray(numbersArray, count));
     setIsListening(false);
-    setHideNumbers(false);
-    setTimeLimit(5);
-    setTimeLeft(5);
-    clearTimeout(timeout);
-    clearInterval(timeInterval);
   };
 
   // ? Recognizing speech function
@@ -102,8 +110,6 @@ const NumbersMemory = () => {
       recognition.interimResults = false;
 
       recognition.onresult = (event) => {
-        clearTimeout(timeout);
-        clearInterval(timeInterval);
         const speechText = event.results[0][0].transcript.trim();
         resolve(speechText);
         setRecognizedSpeech(speechText);
@@ -129,17 +135,8 @@ const NumbersMemory = () => {
       // * Split spoken text into words
       const spokenNumbers = spokenText.replace(/\D/g, '').split('');
 
-      // // * Check which numbers are valid
-      // const correctNumbers = spokenNumbers.filter((num) =>
-      //   numbers.includes(num)
-      // );
-      // const incorrectNumbers = spokenNumbers.filter(
-      //   (num) => !numbers.includes(num)
-      // );
-      // console.log(spokenNumbers, numbers, correctNumbers, count);
-
+      // * Check which numbers are valid
       let correctNumbers = [];
-
       for (let i = 0; i < spokenNumbers.length; i++) {
         for (let x = 0; x < numbers.length; x++) {
           if (
@@ -151,28 +148,25 @@ const NumbersMemory = () => {
         }
       }
 
+      // ? Check Correct Numbers
       if (correctNumbers.length >= count) {
+        setShowConfetti(true);
         toast.success('أحسنت...✅', {
           className: 'toast toast-success',
         });
         afterResult(count);
         setProgress((prev) => (prev >= 100 ? 100 : prev + 20));
+        setTimeout(() => {
+          setShowConfetti(false);
+        }, 5000);
       } else {
         toast.error('خطأ حاول مرة أخري ! ❌', {
           className: 'toast toast-error',
         });
         afterResult(count);
       }
-
-      console.log('Numbers = ' + numbers);
-      console.log('Spoken Numbers = ' + spokenNumbers);
-      console.log('Correct Numbers = ' + correctNumbers);
-      console.log('Count = ' + count);
     } catch (error) {
       console.error('Speech recognition error:', error);
-      // toast.error('خطأ تقني حاول الأتصال بأدمن السيستم ! ❌', {
-      //   className: 'toast toast-error',
-      // });
       toast.error('خطأ حاول مرة أخري بصوت أعلي ! ❌', {
         className: 'toast toast-error',
       });
@@ -191,12 +185,12 @@ const NumbersMemory = () => {
   const handleStopSpeech = () => {
     if (recognition) recognition.stop();
     setIsListening(false);
-    clearTimeout(timeout);
-    clearInterval(timeInterval);
   };
 
   return (
     <div className='numbers-activity-sec relative w-screen h-screen flex'>
+      {showConfetti && <Confetti className='w-full h-full' />}
+
       {/* Background Image */}
       <div className='holder absolute top-0 left-0 size-full'></div>
 
@@ -215,18 +209,28 @@ const NumbersMemory = () => {
 
           <ul className='w-full h-[90%] flex items-center justify-center flex-col gap-5'>
             {levels.map((level) => (
-              <li
-                className='bg-[#FFF] text-[#C75C5C] py-1 w-fit mx-auto px-5 rounded-2xl'
-                key={level.title}
-              >
+              <li className='bg-transparent w-full' key={level.title}>
                 <button
-                  className='cursor-pointer text-lg font-semibold text-center'
+                  className='w-50 py-2 mx-auto rounded-2xl bg-[#FFF] text-[#C75C5C] cursor-pointer text-lg font-semibold text-center transition-all ease-in-out duration-300 hover:w-full hover:rounded-none'
                   onClick={() => buildGame(level.title, level.numbersCount)}
                 >
                   {level.title}{' '}
                 </button>
               </li>
             ))}
+            <li className='bg-transparent w-full'>
+              <Link
+                className='flex justify-center items-center gap-2 w-30 py-2 mx-auto rounded-2xl bg-[#FFF] text-[#C75C5C] cursor-pointer text-2xl font-semibold text-center transition-all ease-in-out duration-300 hover:w-full hover:rounded-none'
+                to='/speak-play-learn/gameOne'
+              >
+                رجوع{' '}
+                <img
+                  src={exitIcon}
+                  alt='exit icon'
+                  className='w-[40px] h-[40px]'
+                />
+              </Link>
+            </li>
           </ul>
         </section>
 
@@ -295,16 +299,6 @@ const NumbersMemory = () => {
               >
                 إنهاء التسجيل...
               </button>
-
-              {/* Change numbers Button */}
-              {/* <button
-                className='border-2 rounded-3xl bg-[#0F172A] text-[#F3F4F6] py-2 px-10 cursor-pointer transition duration-150 ease-in-out hover:scale-105'
-                onClick={() => {
-                  setNumbers(generateNewNumberArray(numbersArray, count));
-                }}
-              >
-                أرقام جديدة
-              </button> */}
             </section>
           </div>
 

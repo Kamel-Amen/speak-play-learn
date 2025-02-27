@@ -1,16 +1,16 @@
 {
-  "homepage": "https://kamel-amen.github.io/speak-play-learn/",
+  "homepage": "https://kamel-amen.github.io/speak-play-learn",
   "name": "voice-recognition",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",

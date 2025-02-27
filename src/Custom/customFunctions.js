@@ -1,10 +1,6 @@
 const generateNewNumberArray = (numbersArr, count) => {
-  let arr = [];
-  for (let i = 0; i < count; i++) {
-    arr.push(numbersArr[Math.floor(Math.random() * numbersArr.length)]);
-  }
-  // console.log(arr, count);
-  return arr;
+  const shuffled = [...numbersArr].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
 };
 
 export { generateNewNumberArray };
