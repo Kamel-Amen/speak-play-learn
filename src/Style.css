@@ -1,3 +1,5 @@
+/* #C75C5C */
+
 @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
 @import 'tailwindcss';
 /* ! ============================================================== */
@@ -31,6 +33,15 @@
 /* ? Numbers Activity Section */
 .numbers-activity-sec > .holder {
   background: url('/game-one-cover.jpg') no-repeat fixed center;
+}
+
+/* * Pictures Activity Section */
+.pictures-activity-sec > .pictures-activity-holder {
+  background: url('/game-two-cover.jpg') no-repeat fixed center;
+}
+
+.numbers-activity-sec > .holder,
+.pictures-activity-sec > .pictures-activity-holder {
   background-size: cover;
   z-index: -1;
   filter: brightness(20%);
