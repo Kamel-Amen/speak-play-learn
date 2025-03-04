@@ -85,20 +85,49 @@ const ImagesMemory = () => {
   const [recognizedText, setRecognizedText] = useState('');
   // Confetti var
   const [showConfetti, setShowConfetti] = useState(false);
+  // Importing functions from hook
   const { recognizeSpeech, stopRecognition } = useSpeechRecognition();
+  // Interval vars
+  const [timeLeft, setTimeLeft] = useState(100);
+  const [showPictures, setShowPictures] = useState(true);
+  const timeInterval = useRef(null);
 
   //? startGame Function
   const startGame = () => {
     setPicturesArr(generateNewPicturesArray(picturesArray));
     setGameStarted(true);
+    intervalTimer();
   };
 
   //? resetGame Function
   const resetGame = () => {
+    setShowPictures(true);
     stopRecognition(setIsListening);
     setPicturesArr(generateNewPicturesArray(picturesArray));
     setIsListening(false);
+    setTimeLeft(100);
+    intervalTimer();
   };
+
+  //? Interval function
+  function intervalTimer() {
+    if (timeInterval.current) {
+      clearInterval(timeInterval.current);
+    }
+
+    // Time Interval Function and Stop recognition after the selected time limit
+    timeInterval.current = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 0) {
+          //* Hiding pictures
+          setShowPictures(false);
+          clearInterval(timeInterval.current);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  }
 
   //? Start Recognition function
   const handleStartRecognition = async () => {
@@ -175,7 +204,7 @@ const ImagesMemory = () => {
                 />
               </span>
               <span className='timer w-[50%] py-5 flex justify-center items-center text-4xl rounded-2xl bg-[#0F172A] text-[#F3F4F6] border-4 border-[#F3F4F6]'>
-                00
+                {timeLeft ? `0${timeLeft}` : '00'}
               </span>
             </li>
 
@@ -239,11 +268,18 @@ const ImagesMemory = () => {
               />
             </p>
 
-            {/* //* Pictures Board */}
-            <section className='pictures-board w-[90%] h-[48%] px-5 bg-[#0F172A] border-2 border-white text-white font-bold py-3 rounded-2xl flex justify-evenly items-center'>
-              {picturesArr.map((pic) => (
-                <img key={pic} src={pic} alt={pic} />
-              ))}
+            {/* //! Pictures Board */}
+            <section className='pictures-board w-[90%] h-[48%] px-5 bg-[#0F172A] border-2 border-white text-white font-bold py-3 rounded-2xl'>
+              <div
+                className={`w-full h-full flex justify-evenly items-center transition-opacity ease-in-out duration-700 ${
+                  showPictures ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                {' '}
+                {picturesArr.map((pic) => (
+                  <img key={pic} src={pic} alt={pic} />
+                ))}
+              </div>
             </section>
 
             {/* //* Recognized Text */}

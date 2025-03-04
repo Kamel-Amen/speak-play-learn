@@ -46,11 +46,11 @@ const NumbersMemory = () => {
   const [recognizedSpeech, setRecognizedSpeech] = useState('');
   const [isListening, setIsListening] = useState(false);
   const [startGame, setStartGame] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(5);
   const [hideNumbers, setHideNumbers] = useState(false);
   const [progress, setProgress] = useState(0);
-  const timeInterval = useRef(null); // Store interval ID
   const [showConfetti, setShowConfetti] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(5);
+  const timeInterval = useRef(null);
 
   let recognition;
 
@@ -66,6 +66,7 @@ const NumbersMemory = () => {
     if (timeInterval.current) {
       clearInterval(timeInterval.current);
     }
+
     // ? Time Interval Function and Stop recognition after the selected time limit
     timeInterval.current = setInterval(() => {
       setTimeLeft((prev) => {
