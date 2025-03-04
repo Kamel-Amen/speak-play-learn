@@ -3,7 +3,7 @@ import lionPic from '/lion.png';
 import catPic from '/cat.png';
 import snakePic from '/snake.png';
 import elephantPic from '/elephant.png';
-import hipoPic from '/hipo.png';
+import dogPic from '/dog.png';
 
 // ! Machines pictures
 import shipPic from '/ship.png';
@@ -37,74 +37,38 @@ const numbersWordsArray = [
 
 const picturesArray = [
   // Animals Pics
-  [
-    {
-      word: 'أسد',
-      url: lionPic,
-    },
-    {
-      word: 'تعبان',
-      url: snakePic,
-    },
-    {
-      word: 'فيل',
-      url: elephantPic,
-    },
-    {
-      word: 'سيد قشطة',
-      url: hipoPic,
-    },
-    {
-      word: 'قطة',
-      url: catPic,
-    },
-  ],
+  [lionPic, snakePic, elephantPic, dogPic, catPic],
   // Machines Pics
-  [
-    {
-      word: 'عربية',
-      url: carPic,
-    },
-    {
-      word: 'قطار',
-      url: trainPic,
-    },
-    {
-      word: 'موتوسيكل',
-      url: motorbikePic,
-    },
-    {
-      word: 'طيارة',
-      url: planePic,
-    },
-    {
-      word: 'سفينة',
-      url: shipPic,
-    },
-  ],
+  [carPic, trainPic, motorbikePic, planePic, shipPic],
   // House Tools Pics
   [
-    {
-      word: 'سخان',
-      url: waterHeaterPic,
-    },
-    {
-      word: 'بوتجاز',
-      url: gasStovePic,
-    },
-    {
-      word: 'تلاجة',
-      url: fridgePic,
-    },
-    {
-      word: 'تكييف',
-      url: airConditionerPic,
-    },
-    {
-      word: 'غسالة',
-      url: washingMachinePic,
-    },
+    waterHeaterPic,
+    gasStovePic,
+    fridgePic,
+    airConditionerPic,
+    washingMachinePic,
   ],
 ];
 
-export { numbersArray, numbersWordsArray, picturesArray };
+const wordsArray = [
+  'اسد',
+  'تعبان',
+  'ثعبان',
+  'فيل',
+  'كلب',
+  'قطه',
+  'عربية',
+  'قطار',
+  'موتوسيكل',
+  'طياره',
+  'سفينه',
+  'مركب',
+  'سخان',
+  'بوتاجاز',
+  'تلاجه',
+  'ثلاجه',
+  'تكييف',
+  'غساله',
+];
+
+export { numbersArray, numbersWordsArray, picturesArray, wordsArray };
