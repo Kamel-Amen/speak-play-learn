@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { picturesArray, wordsArray } from '../../../Data/data';
+import { picturesArray } from '../../../Data/data';
 import { generateNewPicturesArray } from '../../../Custom/customFunctions';
 import { toast } from 'react-toastify';
 import Confetti from 'react-confetti';
@@ -88,7 +88,7 @@ const ImagesMemory = () => {
   // Importing functions from hook
   const { recognizeSpeech, stopRecognition } = useSpeechRecognition();
   // Interval vars
-  const [timeLeft, setTimeLeft] = useState(100);
+  const [timeLeft, setTimeLeft] = useState(9);
   const [showPictures, setShowPictures] = useState(true);
   const timeInterval = useRef(null);
 
@@ -145,10 +145,11 @@ const ImagesMemory = () => {
 
   //? Check function
   function checkWords(words) {
+    const wordsArr = picturesArr.flatMap((obj) => obj.word.split(' '));
     let correctWords = [];
 
     words.forEach((word) => {
-      if (wordsArray.includes(word)) {
+      if (wordsArr.includes(word)) {
         correctWords.push(word);
       }
     });
@@ -277,7 +278,7 @@ const ImagesMemory = () => {
               >
                 {' '}
                 {picturesArr.map((pic) => (
-                  <img key={pic} src={pic} alt={pic} />
+                  <img key={pic.word} src={pic.picture} alt={pic.word} />
                 ))}
               </div>
             </section>

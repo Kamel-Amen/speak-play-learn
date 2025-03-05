@@ -36,39 +36,30 @@ const numbersWordsArray = [
 ];
 
 const picturesArray = [
-  // Animals Pics
-  [lionPic, snakePic, elephantPic, dogPic, catPic],
-  // Machines Pics
-  [carPic, trainPic, motorbikePic, planePic, shipPic],
-  // House Tools Pics
+  //* Animals Pics
   [
-    waterHeaterPic,
-    gasStovePic,
-    fridgePic,
-    airConditionerPic,
-    washingMachinePic,
+    { picture: lionPic, word: 'اسد أسد' },
+    { picture: snakePic, word: 'ثعبان تعبان' },
+    { picture: elephantPic, word: 'فيل' },
+    { picture: dogPic, word: 'كلب' },
+    { picture: catPic, word: 'قطه قطة' },
+  ],
+  //? Machines Pics
+  [
+    { picture: carPic, word: 'سيارة عربيه سياره' },
+    { picture: trainPic, word: 'قطار' },
+    { picture: motorbikePic, word: 'موتوسيكل' },
+    { picture: planePic, word: 'طياره طائره' },
+    { picture: shipPic, word: 'سفينه مركب' },
+  ],
+  //! House Tools Pics
+  [
+    { picture: waterHeaterPic, word: 'سخان' },
+    { picture: gasStovePic, word: 'بوتاجاز' },
+    { picture: fridgePic, word: 'تلاجه ثلاجه' },
+    { picture: airConditionerPic, word: 'تكييف' },
+    { picture: washingMachinePic, word: 'غسالة غساله' },
   ],
 ];
 
-const wordsArray = [
-  'اسد',
-  'تعبان',
-  'ثعبان',
-  'فيل',
-  'كلب',
-  'قطه',
-  'عربية',
-  'قطار',
-  'موتوسيكل',
-  'طياره',
-  'سفينه',
-  'مركب',
-  'سخان',
-  'بوتاجاز',
-  'تلاجه',
-  'ثلاجه',
-  'تكييف',
-  'غساله',
-];
-
-export { numbersArray, numbersWordsArray, picturesArray, wordsArray };
+export { numbersArray, numbersWordsArray, picturesArray };
