@@ -59,7 +59,7 @@ const Home = () => {
               className='text-[3rem] font-bold underline'
               data-aos='fade-down'
             >
-              من نحن ؟!
+              ماذا نقدم ؟!
             </header>
             <p
               className='w-3/4 mt-10 text-2xl leading-12'
@@ -69,7 +69,7 @@ const Home = () => {
               موقعنا هو موقع تربوي , قائم علي مساعدة وتأهيل الأطفال ذوي
               الأحتياجات الخاصة بشكل عام وذوي أضطراب التلعثم بشكل خاص , فهو قائم
               علي الألعاب التفاعلية التعليمية لتحسين الوظائف التنفيذية للدماغ
-              وعلاج التلعثم بإستخدام أنشطة الكمبيوتر بطريقة ممتعمة ومشجعة .
+              وعلاج التلعثم بإستخدام أنشطة الكمبيوتر بطريقة ممتعة ومشجعة .
               <img src={lolFace} alt='face' className='inline-block' />
             </p>
 
@@ -114,8 +114,8 @@ const Home = () => {
 
         {/* Games */}
         <div className='size-full'>
-          <header className='text-5xl font-bold w-[10rem] mx-auto pt-4 pb-6 border-t-3 border-b-3 rounded-2xl border-gray-500 text-center text-white bg-[#C75C5C]'>
-            ألعابي
+          <header className='text-5xl font-bold w-fit p-6 mx-auto border-t-3 border-b-3 rounded-2xl border-gray-500 text-center text-white bg-[#C75C5C]'>
+            النشاطات
           </header>
 
           {/* Games cards */}
@@ -126,7 +126,7 @@ const Home = () => {
                 data-aos='fade-left'
               >
                 <span className='text-3xl font-bold'>
-                  ألعاب التثبيط | كف الأستجابة
+                  نشاط التثبيط | كف الأستجابة
                 </span>
                 <img
                   src={interaction}
@@ -140,7 +140,7 @@ const Home = () => {
                 data-aos-duration='1500'
               >
                 <span className='text-4xl font-bold'>
-                  ألعاب المرونة المعرفية
+                  نشاط المرونة المعرفية
                 </span>
                 <img
                   src={flexibility}
@@ -156,7 +156,7 @@ const Home = () => {
                 data-aos-duration='1750'
               >
                 <span className='text-2xl font-bold'>
-                  ألعاب الذاكرة العاملة والذاكرة قصيرة الأمد
+                  نشاط الذاكرة العاملة والذاكرة قصيرة الأمد
                 </span>
                 <img src={brain} alt='brain icon' className='ms-5' />
               </section>
@@ -166,7 +166,7 @@ const Home = () => {
                 data-aos-duration='2000'
               >
                 <span className='text-3xl font-bold'>
-                  ألعاب تبديل الأنتباه | التحويل
+                  نشاط تبديل الأنتباه | التحويل
                 </span>
                 <img src={focus} alt='focus icon' className='ms-5' />
               </section>

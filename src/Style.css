@@ -83,6 +83,14 @@ body {
   -moz-transition: all 0.2s ease-in-out;
 }
 
+/* .custom-text-gradient {
+  background: #c75c5c;
+  background: linear-gradient(to left, #c75c5c 29%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
 .toast {
   display: flex;
   justify-content: center;
