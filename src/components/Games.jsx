@@ -15,8 +15,8 @@ const Games = () => {
       aosDuration: 1250,
       games: [
         {
-          gameTitle: 'نشاط الذاكرة',
-          link: '/speak-play-learn/gameOne',
+          gameTitle: 'نشاط كف الأستجابة',
+          link: '/speak-play-learn/gameTwo',
           gameStyle:
             'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-300 ease-in-out hover:scale-110',
           linkColor: 'text-[#FFF]',
@@ -39,7 +39,15 @@ const Games = () => {
       sectionStyle:
         'w-1/4 text-[#C75C5C] bg-[#FFF] flex flex-col justify-center items-center h-full',
       aosDuration: 1750,
-      games: [],
+      games: [
+        {
+          gameTitle: 'نشاط الذاكرة',
+          link: '/speak-play-learn/gameOne',
+          gameStyle:
+            'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-300 ease-in-out hover:scale-110',
+          linkColor: 'text-[#FFF]',
+        },
+      ],
     },
     {
       id: 4,
