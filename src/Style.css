@@ -50,6 +50,16 @@
 
 /* ! ============================================================== */
 
+/* * Game Two Section */
+.stopResponding-activity-sec > .holder {
+  background: url('/road-cover.jpg') no-repeat fixed center;
+  background-size: cover;
+  z-index: -1;
+  filter: brightness(80%);
+  -webkit-filter: brightness(80%);
+}
+
+/* ! ============================================================== */
 /* Default Classes */
 body {
   font-family: 'Cairo', serif !important;
