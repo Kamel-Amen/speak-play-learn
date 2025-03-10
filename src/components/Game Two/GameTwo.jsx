@@ -1,84 +1,132 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Confetti from 'react-confetti';
 import livesIcon from '/lives.png';
 import exitIcon from '/exit.gif';
-
-// const gradients = [
-//   'bg-gradient-to-r from-blue-500 to-green-500',
-//   'bg-gradient-to-r from-purple-500 to-pink-500',
-//   'bg-gradient-to-r from-yellow-500 to-orange-500',
-//   'bg-gradient-to-r from-teal-500 to-indigo-500',
-//   'bg-gradient-to-r from-red-500 to-gray-500',
-// ];
 
 const shapes = [
   {
     name: 'car',
-    color: 'blue',
+    color: '#007BFF',
     svg: (
-      <path d='M14 5a1 1 0 0 1 .694 .28l.087 .095l3.699 4.625h.52a3 3 0 0 1 2.995 2.824l.005 .176v4a1 1 0 0 1 -1 1h-1.171a3.001 3.001 0 0 1 -5.658 0h-4.342a3.001 3.001 0 0 1 -5.658 0h-1.171a1 1 0 0 1 -1 -1v-6l.007 -.117l.008 -.056l.017 -.078l.012 -.036l.014 -.05l2.014 -5.034a1 1 0 0 1 .928 -.629z' />
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+      >
+        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+        <path d='M14 5a1 1 0 0 1 .694 .28l.087 .095l3.699 4.625h.52a3 3 0 0 1 2.995 2.824l.005 .176v4a1 1 0 0 1 -1 1h-1.171a3.001 3.001 0 0 1 -5.658 0h-4.342a3.001 3.001 0 0 1 -5.658 0h-1.171a1 1 0 0 1 -1 -1v-6l.007 -.117l.008 -.056l.017 -.078l.012 -.036l.014 -.05l2.014 -5.034a1 1 0 0 1 .928 -.629zm-7 11a1 1 0 1 0 0 2a1 1 0 0 0 0 -2m10 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2m-6 -9h-5.324l-1.2 3h6.524zm2.52 0h-.52v3h2.92z' />
+      </svg>
     ),
   },
   {
-    name: 'train',
-    color: 'green',
+    name: 'bike',
+    color: '#FFD700',
     svg: (
-      <path d='M3 10v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2z' />
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      >
+        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+        <path d='M5 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0' fill='transparent' />
+        <path d='M19 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0' fill='transparent' />
+        <path d='M7.5 14h5l4 -4h-10.5m1.5 4l4 -4' fill='transparent' />
+        <path d='M13 6h2l1.5 3l2 4' />
+      </svg>
     ),
   },
-  { name: 'circle', color: 'purple', svg: <circle cx='12' cy='12' r='8' /> },
+  {
+    name: 'truck',
+    color: '#8000FF',
+    svg: (
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        strokeWidth='2'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      >
+        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+        <path d='M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0' fill='transparent' />
+        <path d='M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0' fill='transparent' />
+        <path d='M9 17h6' />
+        <path
+          d='M19 17h1a1 1 0 0 0 1 -1v-4.528a2 2 0 0 0 -.211 -.894l-.96 -1.92a3 3 0 0 0 -2.683 -1.658h-11.146a3 3 0 0 0 -3 3v6a1 1 0 0 0 1 1h1'
+          fill='transparent'
+        />
+        <path d='M3 12h18' />
+        <path d='M15 12v-5' />
+        <path
+          d='M6 4m0 1.5a1.5 1.5 0 0 1 1.5 -1.5h7a1.5 1.5 0 0 1 1.5 1.5v0a1.5 1.5 0 0 1 -1.5 1.5h-7a1.5 1.5 0 0 1 -1.5 -1.5z'
+          fill='transparent'
+        />
+      </svg>
+    ),
+  },
 ];
 
 const GameTwo = () => {
+  // const for shape in shapes arr
   const [shapeIndex, setShapeIndex] = useState(0);
-
-  // Sidebar var
-  const [attempts, setAttempts] = useState(0); // Count car passes (max 5)
-  const [specialCarRound, setSpecialCarRound] = useState(
-    Math.floor(Math.random() * 5) + 1
-  ); // Random round for special car
+  // const for shape passing number in each round
+  const [rounds, setRounds] = useState(0);
+  // const for maximum rounds numbers
+  const maxRounds = 5;
+  // const for round duration
+  const roundDuration = 3;
+  // const for special colored shape
+  const [specialShapeRound, setSpecialShapeRound] = useState(
+    Math.floor(Math.random() * maxRounds) + 1
+  );
+  // const for track game over
   const [gameOver, setGameOver] = useState(false);
+  // const for user win
   const [won, setWon] = useState(false);
-  const [score, setScore] = useState(0); // Track wins
+  // const for user score
+  const [score, setScore] = useState(0);
+  // const for showing confetti on user's win
+  const [showConfetti, setShowConfetti] = useState(false);
 
-  const handleCarClick = () => {
-    if (attempts + 1 === specialCarRound) {
+  //? Handle click on shape function
+  const handleShapeClick = () => {
+    //* (rounds + 1) because rounds starts from 0 not 1
+    if (rounds + 1 === specialShapeRound) {
       setWon(true);
       setScore(score + 1);
       setGameOver(true);
-      new Audio(import.meta.env.BASE_URL + 'success.mp3').play(); // Play success sound
+      setShowConfetti(true);
+      new Audio(import.meta.env.BASE_URL + 'success.mp3').play();
+      setTimeout(() => {
+        setShowConfetti(false);
+      }, 5000);
     } else {
-      new Audio(import.meta.env.BASE_URL + 'fail.wav').play(); // Play fail sound if clicked at wrong time
+      new Audio(import.meta.env.BASE_URL + 'fail.wav').play();
     }
   };
 
-  // const handleAnimationComplete = () => {
-  //   if (attempts + 1 >= 5) {
-  //     setGameOver(true);
-  //     new Audio(import.meta.env.BASE_URL + 'lose.mp3').play(); // Play lose sound when game ends
-  //   } else {
-  //     setAttempts(attempts + 1);
-  //   }
-  // };
-
+  //? Handle restart game function
   const restartGame = () => {
-    setAttempts(0);
-    setSpecialCarRound(Math.floor(Math.random() * 5) + 1);
+    setRounds(0);
+    setSpecialShapeRound(Math.floor(Math.random() * maxRounds) + 1);
     setGameOver(false);
     setWon(false);
-    setShapeIndex((prev) => (prev + 1) % shapes.length); // Switch to next shape
+    setShapeIndex((prev) => (prev + 1) % shapes.length);
   };
 
+  //? Start Rendered code
   return (
     //! Start Stop Responding activity section
     <div className='stopResponding-activity-sec relative w-screen h-screen flex flex-col justify-center items-center'>
-      {/* // <div
-    //   className={`relative w-screen h-screen flex flex-col justify-center items-center transition-all duration-500 ${
-    //     gradients[attempts % gradients.length]
-    //   }`}
-    // > */}
-      {/* //? Background Image */}
+      {showConfetti && <Confetti className='w-full h-full' />}
 
       {/* //? Content Section */}
       <div className='content w-full h-full flex'>
@@ -94,13 +142,13 @@ const GameTwo = () => {
               {score}
             </p>
           </div>
-          {/* //* attempts left */}
+          {/* //* rounds left */}
           <div className='attemptsLeft-sec w-full flex flex-col justify-center items-center gap-5'>
             <header className='w-full flex justify-center items-center gap-4 text-xl font-bold bg-white text-[#0f172a] py-3'>
               باقي 🚗💨{' '}
             </header>
             <p className='border-2 font-bold text-3xl w-fit py-2 px-5 rounded-2xl'>
-              {5 - attempts}
+              {5 - rounds}
             </p>
           </div>
           {/* //* buttons */}
@@ -134,43 +182,42 @@ const GameTwo = () => {
           <div className='holder absolute top-0 left-0 size-full'></div>
           {!gameOver ? (
             <motion.svg
-              key={attempts} // Restart animation each time
-              // width='300'
+              key={rounds}
               width='200'
               height='200'
               viewBox='0 0 24 24'
               className='cursor-pointer mb-[6rem]'
-              // fill={attempts + 1 === specialCarRound ? 'red' : 'blue'} // Change color on special round
+              xmlns='http://www.w3.org/2000/svg'
               fill={
-                attempts + 1 === specialCarRound
+                rounds + 1 === specialShapeRound
                   ? 'red'
                   : shapes[shapeIndex].color
-              } // Special color
-              xmlns='http://www.w3.org/2000/svg'
-              stroke='#111'
+              }
+              stroke={
+                rounds + 1 === specialShapeRound
+                  ? 'red'
+                  : shapes[shapeIndex].color
+              }
               strokeWidth='0.5'
               strokeLinecap='round'
               strokeLinejoin='round'
               initial={{ x: '-150px' }}
               animate={{ x: '100vw' }}
               transition={{
-                duration: Math.max(1, 3 - attempts * 0.4),
-                // duration: 3,
+                duration: Math.max(1, roundDuration - rounds * 0.4),
                 ease: 'linear',
               }}
-              // onAnimationComplete={handleAnimationComplete}
-              onClick={handleCarClick}
+              onClick={handleShapeClick}
               onAnimationComplete={() => {
-                if (attempts + 1 >= 5) {
+                //! Controls maximum number of rounds
+                if (rounds + 1 >= maxRounds) {
                   setGameOver(true);
                   new Audio(import.meta.env.BASE_URL + 'lose.mp3').play();
                 } else {
-                  setAttempts(attempts + 1);
+                  setRounds(rounds + 1);
                 }
               }}
             >
-              {/* <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-              <path d='M14 5a1 1 0 0 1 .694 .28l.087 .095l3.699 4.625h.52a3 3 0 0 1 2.995 2.824l.005 .176v4a1 1 0 0 1 -1 1h-1.171a3.001 3.001 0 0 1 -5.658 0h-4.342a3.001 3.001 0 0 1 -5.658 0h-1.171a1 1 0 0 1 -1 -1v-6l.007 -.117l.008 -.056l.017 -.078l.012 -.036l.014 -.05l2.014 -5.034a1 1 0 0 1 .928 -.629zm-7 11a1 1 0 1 0 0 2a1 1 0 0 0 0 -2m10 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2m-6 -9h-5.324l-1.2 3h6.524zm2.52 0h-.52v3h2.92z' /> */}
               {shapes[shapeIndex].svg}
             </motion.svg>
           ) : (

@@ -8,14 +8,14 @@ const Games = () => {
   const games = [
     {
       id: 1,
-      title: 'نشاطات التثبيط | كف الأستجابة',
+      title: 'التثبيط | كف الأستجابة',
       icon: interaction,
       sectionStyle:
         'w-1/4 text-[#C75C5C] bg-[#FFF] flex flex-col justify-center items-center h-full',
       aosDuration: 1250,
       games: [
         {
-          gameTitle: 'نشاط كف الأستجابة',
+          gameTitle: 'أنشطة كف الأستجابة',
           link: '/speak-play-learn/gameTwo',
           gameStyle:
             'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-300 ease-in-out hover:scale-110',
@@ -25,7 +25,7 @@ const Games = () => {
     },
     {
       id: 2,
-      title: 'نشاطات المرونة المعرفية',
+      title: 'المرونة المعرفية',
       icon: flexibility,
       sectionStyle:
         'w-1/4 text-[#FFF] bg-[#C75C5C] flex flex-col justify-center items-center h-full',
@@ -34,14 +34,14 @@ const Games = () => {
     },
     {
       id: 3,
-      title: 'نشاطات الذاكرة العاملة والذاكرة قصيرة الأمد',
+      title: 'الذاكرة العاملة والذاكرة قصيرة الأمد',
       icon: brain,
       sectionStyle:
         'w-1/4 text-[#C75C5C] bg-[#FFF] flex flex-col justify-center items-center h-full',
       aosDuration: 1750,
       games: [
         {
-          gameTitle: 'نشاط الذاكرة',
+          gameTitle: 'أنشطة الذاكرة',
           link: '/speak-play-learn/gameOne',
           gameStyle:
             'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-300 ease-in-out hover:scale-110',
@@ -51,7 +51,7 @@ const Games = () => {
     },
     {
       id: 4,
-      title: 'نشاطات تبديل الأنتباه | التحويل',
+      title: 'تبديل الأنتباه | التحويل',
       icon: focus,
       sectionStyle:
         'w-1/4 text-[#FFF] bg-[#C75C5C] flex flex-col justify-center items-center h-full',

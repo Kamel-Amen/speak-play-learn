@@ -114,8 +114,8 @@ const Home = () => {
 
         {/* Games */}
         <div className='size-full'>
-          <header className='text-5xl font-bold w-fit p-6 mx-auto border-t-3 border-b-3 rounded-2xl border-gray-500 text-center text-white bg-[#C75C5C]'>
-            النشاطات
+          <header className='text-4xl font-bold w-fit p-6 mx-auto border-t-3 border-b-3 rounded-2xl border-gray-500 text-center text-white bg-[#C75C5C]'>
+            الوظائف التنفيذية للدماغ
           </header>
 
           {/* Games cards */}
@@ -126,7 +126,7 @@ const Home = () => {
                 data-aos='fade-left'
               >
                 <span className='text-3xl font-bold'>
-                  نشاط التثبيط | كف الأستجابة
+                  التثبيط | كف الأستجابة
                 </span>
                 <img
                   src={interaction}
@@ -139,9 +139,7 @@ const Home = () => {
                 data-aos='fade-right'
                 data-aos-duration='1500'
               >
-                <span className='text-4xl font-bold'>
-                  نشاط المرونة المعرفية
-                </span>
+                <span className='text-4xl font-bold'>المرونة المعرفية</span>
                 <img
                   src={flexibility}
                   alt='flexibility icon'
@@ -156,7 +154,7 @@ const Home = () => {
                 data-aos-duration='1750'
               >
                 <span className='text-2xl font-bold'>
-                  نشاط الذاكرة العاملة والذاكرة قصيرة الأمد
+                  الذاكرة العاملة والذاكرة قصيرة الأمد
                 </span>
                 <img src={brain} alt='brain icon' className='ms-5' />
               </section>
@@ -166,7 +164,7 @@ const Home = () => {
                 data-aos-duration='2000'
               >
                 <span className='text-3xl font-bold'>
-                  نشاط تبديل الأنتباه | التحويل
+                  تبديل الأنتباه | التحويل
                 </span>
                 <img src={focus} alt='focus icon' className='ms-5' />
               </section>
