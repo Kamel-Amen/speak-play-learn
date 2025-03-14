@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { generateNewNumberArray } from '../../../Custom/customFunctions';
-import { numbersArray } from '../../../Data/data';
+import { numbersArray, levelsArray as levels } from '../../../Data/data';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
@@ -11,47 +11,30 @@ import levelsIcon from '/levels.png';
 import clockIcon from '/clock.gif';
 import exitIcon from '/exit.gif';
 
-const levels = [
-  {
-    title: 'المستوي الأول',
-    numbersCount: 3,
-  },
-  {
-    title: 'المستوي الثاني',
-    numbersCount: 4,
-  },
-  {
-    title: 'المستوي الثالث',
-    numbersCount: 5,
-  },
-  {
-    title: 'المستوي الرابع',
-    numbersCount: 6,
-  },
-  {
-    title: 'المستوي الخامس',
-    numbersCount: 7,
-  },
-  {
-    title: 'المستوي السادس',
-    numbersCount: 8,
-  },
-];
-
 // ! Component
 const NumbersMemory = () => {
-  // ? Initialized consts
+  // const for numbers array
   const [numbers, setNumbers] = useState([]);
-  const [count, setCount] = useState(0);
+  // const number of numbers in nums array
+  const [numbersCount, setNumbersCount] = useState(0);
+  // const for saving recognized speech from user
   const [recognizedSpeech, setRecognizedSpeech] = useState('');
+  // const for recognizing if speech is on or off
   const [isListening, setIsListening] = useState(false);
+  // const for starting game
   const [startGame, setStartGame] = useState(false);
+  // const for hiding numbers
   const [hideNumbers, setHideNumbers] = useState(false);
+  // const for progress bar
   const [progress, setProgress] = useState(0);
+  // const for showing confetti on win
   const [showConfetti, setShowConfetti] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(5);
+  // const for time left before hiding numbers
+  const [timeLeft, setTimeLeft] = useState(0);
+  // const for decreasing time left every one second
   const timeInterval = useRef(null);
 
+  // var for recognizing speech
   let recognition;
 
   // ! Hooks
@@ -81,23 +64,23 @@ const NumbersMemory = () => {
   };
 
   // ? Build Function
-  const buildGame = (title, count) => {
+  const buildGame = (title, numbersCount, timer) => {
     setHideNumbers(false);
-
     setStartGame(true);
-    afterResult(count);
+    afterResult(numbersCount);
     setProgress(0);
-
+    setTimeLeft(timer);
     intervals();
+    console.log(title);
   };
 
   // ? Reset Game Function
-  const afterResult = (count) => {
+  const afterResult = (numbersCount) => {
     setTimeLeft(5);
     intervals();
     setNumbers([]);
-    setCount(count);
-    setNumbers(generateNewNumberArray(numbersArray, count));
+    setNumbersCount(numbersCount);
+    setNumbers(generateNewNumberArray(numbersArray, numbersCount));
     setIsListening(false);
   };
 
@@ -150,12 +133,12 @@ const NumbersMemory = () => {
       }
 
       // ? Check Correct Numbers
-      if (correctNumbers.length >= count) {
+      if (correctNumbers.length >= numbersCount) {
         setShowConfetti(true);
         toast.success('أحسنت...✅', {
           className: 'toast toast-success',
         });
-        afterResult(count);
+        afterResult(numbersCount);
         setProgress((prev) => (prev >= 100 ? 100 : prev + 20));
         setTimeout(() => {
           setShowConfetti(false);
@@ -164,14 +147,14 @@ const NumbersMemory = () => {
         toast.error('خطأ حاول مرة أخري ! ❌', {
           className: 'toast toast-error',
         });
-        afterResult(count);
+        afterResult(numbersCount);
       }
     } catch (error) {
       console.error('Speech recognition error:', error);
       toast.error('خطأ حاول مرة أخري بصوت أعلي ! ❌', {
         className: 'toast toast-error',
       });
-      afterResult(count);
+      afterResult(numbersCount);
     }
   };
 
@@ -208,12 +191,15 @@ const NumbersMemory = () => {
             المستويات
           </header>
 
+          {/* //? Start Levels */}
           <ul className='w-full h-[90%] flex items-center justify-center flex-col gap-5'>
             {levels.map((level) => (
               <li className='bg-transparent w-full' key={level.title}>
                 <button
                   className='w-50 py-2 mx-auto rounded-2xl bg-[#FFF] text-[#C75C5C] cursor-pointer text-lg font-semibold text-center transition-all ease-in-out duration-300 hover:w-full hover:rounded-none'
-                  onClick={() => buildGame(level.title, level.numbersCount)}
+                  onClick={() =>
+                    buildGame(level.title, level.numbersCount, level.timeLeft)
+                  }
                 >
                   {level.title}{' '}
                 </button>
