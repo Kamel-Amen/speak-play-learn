@@ -1,23 +1,85 @@
-// * Animals pictures
+//? games icons imports
+import interaction from '/interaction.png';
+import brain from '/brain.png';
+import flexibility from '/flexibility.png';
+import focus from '/focus.png';
+
+//! Animals pictures imports
 import lionPic from '/lion.png';
 import catPic from '/cat.png';
 import snakePic from '/snake.png';
 import elephantPic from '/elephant.png';
 import dogPic from '/dog.png';
 
-// ! Machines pictures
+//! Machines pictures imports
 import shipPic from '/ship.png';
 import carPic from '/car.png';
 import planePic from '/plane.png';
 import trainPic from '/train.png';
 import motorbikePic from '/motorbike.png';
 
-// ? House Machines pictures
+//! House Machines pictures imports
 import airConditionerPic from '/airConditioner.png';
 import fridgePic from '/fridge.png';
 import gasStovePic from '/gasStove.png';
 import washingMachinePic from '/washingMachine.png';
 import waterHeaterPic from '/waterHeater.png';
+
+//? games array for games page
+const gamesArray = [
+  {
+    id: 1,
+    title: 'التثبيط | كف الأستجابة',
+    icon: interaction,
+    sectionStyle:
+      'w-1/4 text-[#C75C5C] bg-[#FFF] flex flex-col justify-center items-center h-full',
+    aosDuration: 1250,
+    games: [
+      {
+        gameTitle: 'أنشطة كف الأستجابة',
+        link: '/speak-play-learn/gameTwo',
+        gameStyle:
+          'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-300 ease-in-out hover:scale-110',
+        linkColor: 'text-[#FFF]',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'المرونة المعرفية',
+    icon: flexibility,
+    sectionStyle:
+      'w-1/4 text-[#FFF] bg-[#C75C5C] flex flex-col justify-center items-center h-full',
+    aosDuration: 1500,
+    games: [],
+  },
+  {
+    id: 3,
+    title: 'الذاكرة العاملة والذاكرة قصيرة الأمد',
+    icon: brain,
+    sectionStyle:
+      'w-1/4 text-[#C75C5C] bg-[#FFF] flex flex-col justify-center items-center h-full',
+    aosDuration: 1750,
+    games: [
+      {
+        gameTitle: 'أنشطة الذاكرة',
+        link: '/speak-play-learn/gameOne',
+        gameStyle:
+          'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-300 ease-in-out hover:scale-110',
+        linkColor: 'text-[#FFF]',
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: 'تبديل الأنتباه | التحويل',
+    icon: focus,
+    sectionStyle:
+      'w-1/4 text-[#FFF] bg-[#C75C5C] flex flex-col justify-center items-center h-full',
+    aosDuration: 2000,
+    games: [],
+  },
+];
 
 //* Numbers array [game 1]
 const numbersArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -107,4 +169,5 @@ export {
   picturesArray,
   levelsArray,
   colorsArray,
+  gamesArray,
 };
