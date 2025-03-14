@@ -29,6 +29,8 @@ const NumbersMemory = () => {
   const [progress, setProgress] = useState(0);
   // const for showing confetti on win
   const [showConfetti, setShowConfetti] = useState(false);
+  // const for lever timer
+  const [levelTimer, setLevelTimer] = useState(0);
   // const for time left before hiding numbers
   const [timeLeft, setTimeLeft] = useState(0);
   // const for decreasing time left every one second
@@ -71,12 +73,13 @@ const NumbersMemory = () => {
     setProgress(0);
     setTimeLeft(timer);
     intervals();
+    setLevelTimer(timer);
     console.log(title);
   };
 
   // ? Reset Game Function
   const afterResult = (numbersCount) => {
-    setTimeLeft(5);
+    setTimeLeft(levelTimer);
     intervals();
     setNumbers([]);
     setNumbersCount(numbersCount);
