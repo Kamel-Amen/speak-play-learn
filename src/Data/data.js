@@ -39,7 +39,7 @@ const gamesArray = [
         gameTitle: 'أنشطة كف الأستجابة',
         link: '/speak-play-learn/gameTwo',
         gameStyle:
-          'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-300 ease-in-out hover:scale-110',
+          'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-150 ease-in-out hover:scale-110',
         linkColor: 'text-[#FFF]',
       },
     ],
@@ -65,7 +65,7 @@ const gamesArray = [
         gameTitle: 'أنشطة الذاكرة',
         link: '/speak-play-learn/gameOne',
         gameStyle:
-          'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-300 ease-in-out hover:scale-110',
+          'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-150 ease-in-out hover:scale-110',
         linkColor: 'text-[#FFF]',
       },
     ],
@@ -77,7 +77,15 @@ const gamesArray = [
     sectionStyle:
       'w-1/4 text-[#FFF] bg-[#C75C5C] flex flex-col justify-center items-center h-full',
     aosDuration: 2000,
-    games: [],
+    games: [
+      {
+        gameTitle: 'نشاط التنفس',
+        link: '/speak-play-learn/gameThree',
+        gameStyle:
+          'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#fff] transition duration-150 ease-in-out hover:scale-110',
+        linkColor: 'text-[#C75C5C]',
+      },
+    ],
   },
 ];
 
