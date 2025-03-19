@@ -60,6 +60,26 @@
 }
 
 /* ! ============================================================== */
+
+/* ? Game Three Section */
+/* .gameThree-sec > .game-content > .holder {
+  background: url('/gameThree-cover.jpg') repeat-x fixed center;
+  background-size: cover;
+  z-index: -1;
+  filter: brightness(80%);
+  -webkit-filter: brightness(80%);
+} */
+
+.gameThree-sec > .game-content > .road {
+  background: url('/gameThree-cover.jpg') repeat-x;
+  background-size: contain;
+  z-index: -1;
+  transition: background-position 0.5s linear;
+  -webkit-transition: background-position 0.5s linear;
+  -moz-transition: background-position 0.5s linear;
+}
+
+/* ! ============================================================== */
 /* Default Classes */
 body {
   font-family: 'Cairo', serif !important;
