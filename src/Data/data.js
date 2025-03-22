@@ -36,7 +36,7 @@ const gamesArray = [
     aosDuration: 1250,
     games: [
       {
-        gameTitle: 'أنشطة كف الأستجابة',
+        gameTitle: 'نشاط كف الأستجابة',
         link: '/speak-play-learn/gameTwo',
         gameStyle:
           'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-150 ease-in-out hover:scale-110',
@@ -62,7 +62,7 @@ const gamesArray = [
     aosDuration: 1750,
     games: [
       {
-        gameTitle: 'أنشطة الذاكرة',
+        gameTitle: 'نشاط الذاكرة',
         link: '/speak-play-learn/gameOne',
         gameStyle:
           'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#C75C5C] transition duration-150 ease-in-out hover:scale-110',
