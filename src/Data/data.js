@@ -82,6 +82,13 @@ const gamesArray = [
         gameTitle: 'نشاط التنفس',
         link: '/speak-play-learn/gameThree',
         gameStyle:
+          'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#fff] transition duration-150 ease-in-out hover:scale-110 mb-5',
+        linkColor: 'text-[#C75C5C]',
+      },
+      {
+        gameTitle: 'نشاط تبديل الأنتباه',
+        link: '/speak-play-learn/gameFour',
+        gameStyle:
           'game-btn font-bold w-fit mx-auto text-white py-3 px-5 rounded-4xl bg-[#fff] transition duration-150 ease-in-out hover:scale-110',
         linkColor: 'text-[#C75C5C]',
       },
