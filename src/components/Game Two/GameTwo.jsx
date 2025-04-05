@@ -102,26 +102,22 @@ const GameTwo = () => {
 
   //? Handle click on shape function
   const handleShapeClick = () => {
-    //* (rounds + 1) because rounds starts from 0 not 1
     if (rounds + 1 === specialShapeRound) {
-      setWon(true);
-      setScore(score + 1);
       setGameOver(true);
-      setShowConfetti(true);
-      setShapeColor(colors[Math.floor(Math.random() * colors.length)]);
-      new Audio(import.meta.env.BASE_URL + 'success.mp3').play();
-      toast.info('أختر مستوي جديد...');
-      setTimeout(() => {
-        setShowConfetti(false);
-      }, 5000);
+      setShowConfetti(false);
+      new Audio(import.meta.env.BASE_URL + 'lose.mp3').play();
+      toast.error('❌ لقد خسرت! لا تضغط على الشكل الأحمر.');
     } else {
-      new Audio(import.meta.env.BASE_URL + 'fail.wav').play();
+      setScore(score + 1);
+      toast.success('أحسنت... 🎉');
     }
   };
 
   //? Handle restart game function
   const restartGame = (duration) => {
+    setShowConfetti(false);
     setRounds(0);
+    setScore(0);
     setSpecialShapeRound(Math.floor(Math.random() * maxRounds) + 1);
     setShapeColor(colors[Math.floor(Math.random() * colors.length)]);
     setGameOver(false);
@@ -234,11 +230,20 @@ const GameTwo = () => {
               }}
               onClick={handleShapeClick}
               onAnimationComplete={() => {
-                //! Controls maximum number of rounds
+                //! Controls maximum number of rounds, wining and losing situations
                 if (rounds + 1 >= maxRounds) {
-                  toast.info('أختر مستوي جديد...');
-                  setGameOver(true);
-                  new Audio(import.meta.env.BASE_URL + 'lose.mp3').play();
+                  if (score >= 4) {
+                    toast.info('أختر مستوي جديد...');
+                    setGameOver(true);
+                    setWon(true);
+                    new Audio(import.meta.env.BASE_URL + 'success.mp3').play();
+                    setShowConfetti(true);
+                  } else {
+                    toast.error('لقد خسرت! لم تضغط 4 أشكال ❌');
+                    setGameOver(true);
+                    setShowConfetti(false);
+                    new Audio(import.meta.env.BASE_URL + 'lose.mp3').play();
+                  }
                 } else {
                   setRounds(rounds + 1);
                 }
