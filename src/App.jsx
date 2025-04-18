@@ -12,6 +12,7 @@ import ImagesMemory from './components/Game One/activities/ImagesMemory';
 import GameTwo from './components/Game Two/GameTwo';
 import GameThree from './components/Game Three/GameThree';
 import GameFour from './components/Game Four/GameFour';
+import GameFive from './components/Game Five/GameFive';
 import NotFound from './Custom Components/NotFound';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path='/speak-play-learn/gameTwo' element={<GameTwo />} />
         <Route path='/speak-play-learn/gameThree' element={<GameThree />} />
         <Route path='/speak-play-learn/gameFour' element={<GameFour />} />
+        <Route path='/speak-play-learn/gameFive' element={<GameFive />} />
         <Route path='*' element={<NotFound />} />{' '}
       </Routes>
       <ToastContainer />
