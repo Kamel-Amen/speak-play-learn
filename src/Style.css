@@ -62,14 +62,6 @@
 /* ! ============================================================== */
 
 /* ? Game Three Section */
-/* .gameThree-sec > .game-content > .holder {
-  background: url('/gameThree-cover.jpg') repeat-x fixed center;
-  background-size: cover;
-  z-index: -1;
-  filter: brightness(80%);
-  -webkit-filter: brightness(80%);
-} */
-
 .gameThree-sec > .game-content > .road {
   background: url('/gameThree-cover.jpg') repeat-x;
   background-size: contain;
@@ -80,6 +72,18 @@
 }
 
 /* ! ============================================================== */
+
+/* ? Game Five Section */
+.gameFive-sec > .game-content > .background {
+  background: url('/game-five-cover.jpg');
+  background-size: cover;
+  z-index: -1;
+  filter: brightness(20%);
+  -webkit-filter: brightness(20%);
+}
+
+/* ! ============================================================== */
+
 /* Default Classes */
 body {
   font-family: 'Cairo', serif !important;
