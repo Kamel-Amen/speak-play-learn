@@ -23,6 +23,14 @@
 }
 /* ! ============================================================== */
 
+/* * Homepage Section */
+.homepage > .presentation-video-sec {
+  background: url('/slideShow Cover.jpg') no-repeat center;
+  background-size: cover;
+  z-index: -1;
+}
+/* * Homepage Section */
+
 /* * Game One Section */
 .game-one-sec > .holder {
   background: url('/endless-constellation.png') no-repeat fixed center;

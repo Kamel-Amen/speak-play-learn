@@ -8,6 +8,8 @@ import flexibility from '/flexibility.png';
 import interaction from '/interaction.png';
 import focus from '/focus.png';
 import Footer from '../../Custom Components/Footer';
+import presentationVideo from '/Slideshow.mp4';
+import heroIcon from '/superhero.png';
 
 const Home = () => {
   return (
@@ -96,6 +98,29 @@ const Home = () => {
             />
           </section>
         </div>
+      </section>
+
+      {/* Presentation Video Section */}
+      <section className='presentation-video-sec w-full py-[5rem] text-white flex flex-col gap-30 justify-start items-center'>
+        <header
+          className='w-[40rem] mx-auto flex justify-center items-center gap-5 text-5xl font-bold border-y-2 py-4'
+          data-aos='fade-down'
+          data-aos-duration='1250'
+        >
+          رحلة في دماغ بطل خارق
+          <img src={heroIcon} alt='hero icon' className='w-[5rem] h-[5rem]' />
+        </header>
+
+        {/* Video Section */}
+        <video
+          controls
+          autoPlay
+          data-aos='zoom-in'
+          data-aos-duration='1500'
+          className='w-[75%] h-[50%]'
+        >
+          <source src={presentationVideo} type='video/mp4' />
+        </video>
       </section>
 
       {/* Games Section */}
